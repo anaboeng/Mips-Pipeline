@@ -16,12 +16,13 @@ entity banco_registradores is
     );
 
 	port(
-		reg_write	: in std_logic;
-		data_in 		: in std_logic_vector(n-1 downto 0);
-		clock			: in std_logic;
-		reg_address	: in std_logic_vector(n-1 downto 0);
-		r0_out 		: out std_logic_vector(n-1 downto 0);
-		data_out		: out std_logic_vector(n-1 downto 0)
+		read_register1: in std_logic_vector(bits_enderecamento-1 downto 0);
+        read_register2: in std_logic_vector(bits_enderecamento-1 downto 0);
+        write_register: in std_logic_vector(bits_enderecamento-1 downto 0);
+        write_data: in std_logic_vector(n-1 downto 0);
+        read_data1: out std_logic_vector(n-1 downto 0);
+        read_data2: out std_logic(n-1 downto 0);
+        reg_write: in std_logic
 	);
 	
 end banco_registradores;
@@ -36,16 +37,15 @@ begin
     process(clock)
     begin
         if rising_edge(clock) then
-            if reg_write = '1' then
-                -- usa apenas os 3 LSBs para acessar os registradores
-                s_registradores(to_integer(unsigned(reg_address(bits_enderecamento-1 downto 0)))) <= data_in;
+            if reg_wirte = '1' then
+                s_registradores(to_integer(unsigned(write_register(bits_enderecamento-1 downto 0)))) <= wirte_data;
             end if;
         end if;
     end process;
 
-    -- sa�das
-    data_out <= s_registradores(to_integer(unsigned(reg_address(bits_enderecamento-1 downto 0))));
-    r0_out   <= s_registradores(2);
+    -- saidas
+    read_data1 <= s_registradores(to_integer(unsigned(read_register1(bits_enderecamento-1 downto 0))));
+    read_data2 <= s_registradores(to_integer(unsigned(read_register2(bits_enderecamento-1 downto 0))));
 	 
 end Behavioral;
 

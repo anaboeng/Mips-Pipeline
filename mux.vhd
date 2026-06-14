@@ -8,16 +8,16 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity mux is
 
-	 generic (
-			  n: integer := 32
-	 );
+	generic (
+		n: integer := 32
+	);
     port (
 
-			  a	:	in	std_logic_vector(n-1 downto 0);
-			  b	:	in std_logic_vector(n-1 downto 0);  	 
-			  enable:	in    std_logic;
-           data_out : out  std_logic_vector(n-1 downto 0)			  
-	 );
+			a:	in	std_logic_vector(n-1 downto 0);
+			b:	in std_logic_vector(n-1 downto 0);  	 
+			enable:	in    std_logic;
+           data_out: out  std_logic_vector(n-1 downto 0)			  
+	);
 
 		
 end mux;
