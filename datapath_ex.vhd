@@ -1,3 +1,8 @@
+----------------------------------------------------------------------------------
+-- Project Name:   Mips-Pipeline; 
+-- Module Name:    datapath_ex - Structural;
+-- Description:    Top level do estágio de Execução (EX) do Pipeline com Branch Target;
+----------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
